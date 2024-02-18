@@ -69,10 +69,10 @@ gulp.task('injectPartial', function () {
 gulp.task('injectCommonAssets', function () {
   return gulp.src('./**/*.html')
     .pipe(inject(gulp.src([
-        './vendors/mdi/css/materialdesignicons.min.css', 
-        './vendors/feather/feather.css',
-        './vendors/base/vendor.bundle.base.css', 
-        './vendors/base/vendor.bundle.base.js',
+        './vendorsA/mdi/css/materialdesignicons.min.css',
+        './vendorsA/feather/feather.css',
+        './vendorsA/base/vendor.bundle.base.css',
+        './vendorsA/base/vendor.bundle.base.js',
     ], {read: false}), {name: 'base', relative: true}))
     .pipe(inject(gulp.src([
         './css/*.css',
@@ -114,9 +114,9 @@ gulp.task('replacePath', function(){
 /*sequence for injecting partials and replacing paths*/
 gulp.task('inject', gulp.series('injectPartial' , 'injectCommonAssets' , 'injectLayoutStyles', 'replacePath'));
 
-gulp.task('clean:vendors', function () {
+gulp.task('clean:vendorsA', function () {
     return del([
-      'vendors/**/*'
+      'vendorsA/**/*'
     ]);
 });
 
@@ -129,38 +129,38 @@ gulp.task('buildBaseVendorScripts', function() {
         './node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js'
     ])
       .pipe(concat('vendor.bundle.base.js'))
-      .pipe(gulp.dest('./vendors/base'));
+      .pipe(gulp.dest('./vendorsA/base'));
 });
 
 /*Building vendor styles needed for basic template rendering*/
 gulp.task('buildBaseVendorStyles', function() {
     return gulp.src(['./node_modules/perfect-scrollbar/css/perfect-scrollbar.css'])
       .pipe(concat('vendor.bundle.base.css'))
-      .pipe(gulp.dest('./vendors/base'));
+      .pipe(gulp.dest('./vendorsA/base'));
 });
 
 /*Scripts for addons*/
 gulp.task('copyAddonsScripts', function() {
     var aScript1 = gulp.src(['node_modules/chart.js/dist/Chart.min.js'])
-        .pipe(gulp.dest('./vendors/chart.js'));
+        .pipe(gulp.dest('./vendorsA/chart.js'));
     var aScript2 = gulp.src(['node_modules/jquery-bar-rating/dist/jquery.barrating.min.js'])
-        .pipe(gulp.dest('./vendors/jquery-bar-rating'));
+        .pipe(gulp.dest('./vendorsA/jquery-bar-rating'));
     var aScript3 = gulp.src(['node_modules/progressbar.js/dist/progressbar.min.js'])
-        .pipe(gulp.dest('./vendors/progressbar.js'));
+        .pipe(gulp.dest('./vendorsA/progressbar.js'));
     var aScript4 = gulp.src(['node_modules/progressbar.js/dist/progressbar.min.js'])
-        .pipe(gulp.dest('./vendors/progressbar.js'));
+        .pipe(gulp.dest('./vendorsA/progressbar.js'));
     var aScript5 = gulp.src(['node_modules/jquery-file-upload/js/jquery.uploadfile.min.js'])
-        .pipe(gulp.dest('./vendors/jquery-file-upload'));
+        .pipe(gulp.dest('./vendorsA/jquery-file-upload'));
     var aScript6 = gulp.src(['node_modules/jquery.repeater/jquery.repeater.min.js'])
-        .pipe(gulp.dest('./vendors/jquery.repeater'));
+        .pipe(gulp.dest('./vendorsA/jquery.repeater'));
     var aScript7 = gulp.src(['node_modules/typeahead.js/dist/typeahead.bundle.min.js'])
-        .pipe(gulp.dest('./vendors/typeahead.js'));
+        .pipe(gulp.dest('./vendorsA/typeahead.js'));
     var aScript8 = gulp.src(['node_modules/select2/dist/js/select2.min.js'])
-        .pipe(gulp.dest('./vendors/select2'));
+        .pipe(gulp.dest('./vendorsA/select2'));
     var aScript9 = gulp.src(['node_modules/jquery-bar-rating/dist/jquery.barrating.min.js.map'])
-        .pipe(gulp.dest('./vendors/jquery-bar-rating'));
+        .pipe(gulp.dest('./vendorsA/jquery-bar-rating'));
     var aScript10 = gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js.map'])
-        .pipe(gulp.dest('./vendors/base'));
+        .pipe(gulp.dest('./vendorsA/base'));
     return merge(aScript1, aScript2, aScript3, aScript4, aScript5, aScript6, aScript7, aScript8, aScript9, aScript10);
 });
 
@@ -168,37 +168,37 @@ gulp.task('copyAddonsScripts', function() {
 /*Styles for addons*/
 gulp.task('copyAddonsStyles', function() {   
     var aStyle1 = gulp.src(['./node_modules/font-awesome/css/font-awesome.min.css'])
-        .pipe(gulp.dest('./vendors/font-awesome/css'));
+        .pipe(gulp.dest('./vendorsA/font-awesome/css'));
     var aStyle2 = gulp.src(['./node_modules/font-awesome/fonts/*'])
-        .pipe(gulp.dest('./vendors/font-awesome/fonts'));
+        .pipe(gulp.dest('./vendorsA/font-awesome/fonts'));
     var aStyle3 = gulp.src(['./node_modules/flag-icon-css/css/flag-icon.min.css'])
-        .pipe(gulp.dest('./vendors/flag-icon-css/css'));
+        .pipe(gulp.dest('./vendorsA/flag-icon-css/css'));
     var aStyle4 = gulp.src(['./node_modules/flag-icon-css/flags/**/*'])
-        .pipe(gulp.dest('./vendors/flag-icon-css/flags'));
+        .pipe(gulp.dest('./vendorsA/flag-icon-css/flags'));
     var aStyle5 = gulp.src(['node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css'])
-        .pipe(gulp.dest('./vendors/jquery-bar-rating'));
+        .pipe(gulp.dest('./vendorsA/jquery-bar-rating'));
     var aStyle6 = gulp.src(['node_modules/jquery-bar-rating/dist/themes/fontawesome-stars-o.css'])
-        .pipe(gulp.dest('./vendors/jquery-bar-rating'));
+        .pipe(gulp.dest('./vendorsA/jquery-bar-rating'));
     var aStyle7 = gulp.src(['node_modules/jquery-file-upload/css/uploadfile.css'])
-        .pipe(gulp.dest('./vendors/jquery-file-upload'));
+        .pipe(gulp.dest('./vendorsA/jquery-file-upload'));
     var aStyle8 = gulp.src(['node_modules/select2/dist/css/select2.min.css'])
-        .pipe(gulp.dest('./vendors/select2')); 
+        .pipe(gulp.dest('./vendorsA/select2'));
     var aStyle9 = gulp.src(['node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css'])
-        .pipe(gulp.dest('./vendors/select2-bootstrap-theme'));
+        .pipe(gulp.dest('./vendorsA/select2-bootstrap-theme'));
     var aStyle10 = gulp.src(['./node_modules/puse-icons-feather/feather.css'])
-        .pipe(gulp.dest('./vendors/feather'));
+        .pipe(gulp.dest('./vendorsA/feather'));
     var aStyle11 = gulp.src(['./node_modules/puse-icons-feather/fonts/*'])
-        .pipe(gulp.dest('./vendors/feather/fonts'));
+        .pipe(gulp.dest('./vendorsA/feather/fonts'));
     var aStyle12 = gulp.src(['./node_modules/@mdi/font/css/materialdesignicons.min.css'])
-        .pipe(gulp.dest('./vendors/mdi/css'));
+        .pipe(gulp.dest('./vendorsA/mdi/css'));
     var aStyle13 = gulp.src(['./node_modules/@mdi/font/fonts/*'])
-        .pipe(gulp.dest('./vendors/mdi/fonts'));
+        .pipe(gulp.dest('./vendorsA/mdi/fonts'));
     var aStyle14 = gulp.src(['./node_modules/@mdi/font/css/materialdesignicons.min.css.map'])
-        .pipe(gulp.dest('./vendors/mdi/css'));
+        .pipe(gulp.dest('./vendorsA/mdi/css'));
     return merge(aStyle1, aStyle2, aStyle3, aStyle4, aStyle5, aStyle6, aStyle7, aStyle8, aStyle9, aStyle10, aStyle11, aStyle12, aStyle13, aStyle14);
 });
 
 /*sequence for building vendor scripts and styles*/
-gulp.task('bundleVendors', gulp.series('clean:vendors', 'buildBaseVendorStyles','buildBaseVendorScripts', 'copyAddonsStyles', 'copyAddonsScripts'));
+gulp.task('bundleVendors', gulp.series('clean:vendorsA', 'buildBaseVendorStyles','buildBaseVendorScripts', 'copyAddonsStyles', 'copyAddonsScripts'));
 
 gulp.task('default', gulp.series('serve'));

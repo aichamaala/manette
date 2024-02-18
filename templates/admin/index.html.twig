@@ -1,0 +1,53 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block body %}
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Prenom</th>
+                <th>Role</th>
+                <th>IsVerified</th>
+                <th>Adress</th>
+                <th>Ville</th>
+                <th>Zipcode</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.roles ? utilisateur.roles|json_encode : '' }}</td>
+                <td>{{ utilisateur.password }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.role }}</td>
+                <td>{{ utilisateur.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ utilisateur.adress }}</td>
+                <td>{{ utilisateur.ville }}</td>
+                <td>{{ utilisateur.zipcode }}</td>
+                <td>
+                    <a href="{{ path('app_admin_show', {'id': utilisateur.id}) }}">show</a>
+                    <a href="{{ path('app_admin_edit', {'id': utilisateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

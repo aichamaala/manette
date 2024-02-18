@@ -20395,12 +20395,12 @@ code {
 
 .form-check-primary.form-check label input[type="checkbox"] + .input-helper:before,
 .form-check-primary.form-check label input[type="radio"] + .input-helper:before {
-  border-color: #ec37fc;
+  border-color: #9400D3;
 }
 
 .form-check-primary.form-check label input[type="checkbox"]:checked + .input-helper:before,
 .form-check-primary.form-check label input[type="radio"]:checked + .input-helper:before {
-  background: #ec37fc;
+  background: #9400D3;
 }
 
 .form-check-secondary.form-check label input[type="checkbox"] + .input-helper:before,
@@ -22739,7 +22739,7 @@ dl li {
     display: flex;
     -webkit-align-items: center;
     align-items: center;
-    background: #b10dbf;
+    background: #9400D3;
     padding: 0 1.4rem;
     left: 70px;
     position: absolute;
@@ -22767,7 +22767,7 @@ dl li {
   .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
     display: block;
     padding: 0 0;
-    background: #ec37fc;
+    background: #9400D3;
     border-radius: 0 0 5px 0;
     position: absolute;
     left: 70px;
